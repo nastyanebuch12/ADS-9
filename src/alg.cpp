@@ -1,3 +1,4 @@
+// Copyright 2022 NNTU-CS
 #include  <iostream>
 #include  <fstream>
 #include  <locale>
@@ -8,22 +9,22 @@
 
 PMTree::PMTree(const std::vector<char>& items) {
   totalPerms = 1;
-  for (int i = 2; i <= items.size(); ++i) 
+  for (int i = 2; i <= items.size(); ++i)
     totalPerms *= i;
   root = new Node(0);
   build(root, items);
 }
 
-PMTree::~PMTree() { 
-  clear(root); 
+PMTree::~PMTree() {
+  clear(root);
 }
 
-Node* PMTree::getRoot() { 
-  return root; 
+Node* PMTree::getRoot() {
+  return root;
 }
 
-int PMTree::getSize() const { 
-  return totalPerms; 
+int PMTree::getSize() const {
+  return totalPerms;
 }
 
 void PMTree::clear(Node* node) {
@@ -42,16 +43,17 @@ void PMTree::build(Node* node, std::vector<char> items) {
   }
 }
 
-void collect(Node* node, std::vector<char>& path, std::vector<std::vector<char>>& out) {
-  if (node->value != 0) 
+void collect(Node* node, std::vector<char>& path,
+             std::vector<std::vector<char>>& out) {
+  if (node->value != 0)
     path.push_back(node->value);
   if (node->children.empty()) {
     if (!path.empty()) out.push_back(path);
   } else {
-    for (auto ch : node->children) 
+    for (auto ch : node->children)
       collect(ch, path, out);
   }
-  if (!path.empty() && node->value != 0) 
+  if (!path.empty() && node->value != 0)
     path.pop_back();
 }
 
