@@ -55,7 +55,8 @@ int main() {
     auto time3_end = std::chrono::high_resolution_clock::now();
     double time3 =
     std::chrono::duration<double, std::milli>(time3_end - time3_start).count();
-    std::cout << n << "\t" << time1 << "\t\t" << time2 << "\t\t" << time3 << endl;
+    std::cout << n << "\t" << time1 << "\t\t" << time2 << "\t\t" << time3
+              << endl;
   }
   return 0;
 }
