@@ -1,5 +1,5 @@
 // Copyright 2022 NNTU-CS
-#include <std::chrono>
+#include <chrono>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
